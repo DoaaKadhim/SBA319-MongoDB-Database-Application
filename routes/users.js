@@ -47,9 +47,9 @@ router.get('/', (req, res) => {
   
   
   // GET a single user by ID
-  router.get('/:id', (req, res) => {
+  router.get('/:id',async (req, res) => {
       // const user = users.find(u => u.id === parseInt(req.params.id));
-      const user= User.findById(req.params.id)
+      const user= await User.findById(req.params.id)
       
       if (user) {
         // res.render('user', { user });
@@ -61,12 +61,14 @@ router.get('/', (req, res) => {
   
   // POST a new user
   router.post('/',async (req, res) => {
-    const newUser = {
+    const newUser = new User({
     //   id: users.length + 1,
       name: req.body.name,
-      email: req.body.email
-    };
-    const user=await User.create(newUser);
+      email: req.body.email,
+      password:req.body.password
+    });
+    console.log(newUser);
+    const user=await newUser.save();
     res.send(user);
   });
   
