@@ -1,7 +1,26 @@
+import express from 'express';
+import db from './db.js'
+
+const app=express()
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.get('/',async (req,res)=>{
+    let collection=await db.collection("posts");
+    let result=await collection.find({}).limit(1).toArray();
+    console.log(result);
+
+    res.send(result)
+})
+
+app.listen(PORT, () =>{
+    console.log(`Connected to server on port :${PORT}`)
+})
+
+//////////////
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const app = express();
 
 // Middleware
 app.use(bodyParser.json());
@@ -20,6 +39,3 @@ mongoose.connect('mongodb://localhost:27017/blog', { useNewUrlParser: true, useU
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
