@@ -1,9 +1,11 @@
 {
   "name": "sba319-mongodb-database-application",
   "version": "1.0.0",
-  "main": "index.js",
-  "type":"module",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +15,7 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.0",
-    "mongoose": "^8.6.2"
+    "mongoose": "^8.6.2",
+    "dotenv": "^16.0.0"
   }
 }
