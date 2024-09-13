@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+// models/comment.js
+import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
   content: { type: String, required: true },
@@ -9,4 +10,4 @@ const commentSchema = new mongoose.Schema({
 commentSchema.index({ post: 1, author: 1 }); // Compound index for post and author fields
 
 const Comment = mongoose.model('Comment', commentSchema);
-module.exports = Comment;
+export default Comment;

@@ -1,5 +1,6 @@
+// routes/comments.js
 import express from 'express';
-import Comment from '../models/comment.js'; // Ensure the path is correct and uses .js extension
+import Comment from '../models/comment.js'; // Ensure this path and export are correct
 
 const router = express.Router();
 
