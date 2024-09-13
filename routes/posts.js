@@ -1,6 +1,5 @@
 import express from 'express';
-import Post from '../models/post.js'; // Import the Post model
-
+import Post from '../models/post.js'; // Note the '.js' extension
 const router = express.Router();
 
 // GET all posts
