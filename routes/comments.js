@@ -1,11 +1,16 @@
-const express = require('express');
+import express from 'express';
+import Comment from '../models/comment.js'; // Ensure the path is correct and uses .js extension
+
 const router = express.Router();
-const Comment = require('../models/comment');
 
 // GET all comments
 router.get('/', async (req, res) => {
-  const comments = await Comment.find().populate('post author');
-  res.json(comments);
+  try {
+    const comments = await Comment.find().populate('post author');
+    res.json(comments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // POST a new comment
@@ -39,4 +44,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
