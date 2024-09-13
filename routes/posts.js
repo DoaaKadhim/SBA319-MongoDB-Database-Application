@@ -1,11 +1,16 @@
-const express = require('express');
+import express from 'express';
+import Post from '../models/post.js'; // Import the Post model
+
 const router = express.Router();
-const Post = require('../models/post');
 
 // GET all posts
 router.get('/', async (req, res) => {
-  const posts = await Post.find().populate('author');
-  res.json(posts);
+  try {
+    const posts = await Post.find().populate('author');
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // POST a new post
@@ -39,4 +44,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

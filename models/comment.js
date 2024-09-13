@@ -1,4 +1,3 @@
-// models/comment.js
 import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
@@ -7,7 +6,7 @@ const commentSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 
-commentSchema.index({ post: 1, author: 1 }); // Compound index for post and author fields
+commentSchema.index({ post: 1, author: 1 });
 
 const Comment = mongoose.model('Comment', commentSchema);
 export default Comment;

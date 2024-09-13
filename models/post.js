@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const postSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -6,7 +6,5 @@ const postSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 
-postSchema.index({ title: 1 }); // Index for title field
-
 const Post = mongoose.model('Post', postSchema);
-module.exports = Post;
+export default Post;
