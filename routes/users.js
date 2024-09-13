@@ -1,7 +1,7 @@
 //Create Routes (Requirement 3-6)
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const User = require('../models/user');
+import User from '../models/user.js';
 
 // GET all users
 router.get('/', async (req, res) => {
@@ -40,4 +40,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
