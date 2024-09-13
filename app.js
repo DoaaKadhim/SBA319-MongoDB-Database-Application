@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
+import 'dotenv/config'
 
 // Initialize Express app
 const app = express();
@@ -16,10 +17,7 @@ app.use('/posts', postRoutes);
 app.use('/comments', commentRoutes);
 
 // Connect to MongoDB
-mongoose.connect(process.env.ATLAS_URI || 'mongodb://localhost:27017/blog', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.ATLAS_URI)
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
 
