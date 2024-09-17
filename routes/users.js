@@ -40,12 +40,20 @@ import User from '../models/user.js';
 //   }
 // });
 //////////////////////////////////////////////////////////////////
+// // GET all users this one work
+// router.get('/', (req, res) => {
+//     res.render('users', { users });
+//   });
+  
+  //////////////////try new one 
+
 // GET all users
-router.get('/', (req, res) => {
-    res.render('users', { users });
-  });
-  
-  
+router.get('/', async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
+
+
   // GET a single user by ID
   router.get('/:id',async (req, res) => {
       // const user = users.find(u => u.id === parseInt(req.params.id));
